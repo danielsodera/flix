@@ -1,0 +1,72 @@
+<section class="movie">
+    <div class="image">
+      <%= image_tag @movie.image_file_name %>
+      <% if current_user %>
+          <div class="faves">
+            <%= fav_or_unfav(@favourite, @movie) %>
+              <div class="count">
+                <%= @fans.size %>
+              </div>
+          </div>
+      <% end %>
+    </div>
+    <div class="summary">
+      <h2>
+        <%= @movie.title %>
+      </h2>
+      <div class="reviews">
+        <%= avg_stars(@movie) %>
+        <%= link_to "Add Review",  movie_reviews_path(@movie) %>
+        
+      </div>
+      <table>
+      <tr>
+        <th>Director:</th>
+        <td><%= @movie.director %></td>
+      </tr>
+      <tr>
+        <th>Duration:</th>
+        <td><%= @movie.duration %></td>
+      </tr>
+      <tr>
+        <th>Total Gross:</th>
+        <td><%= total_gross(@movie) %></td>
+      </tr>
+    </table>
+      <p>
+        <%= @movie.description %>
+      </p>
+    </div>
+  </section>
+
+  <aside>
+  <% if @fans.present? %>
+    <h4>Fans</h4>
+    <ul>
+      <% @fans.each do |user| %>
+        <li>
+          <%= link_to user.name, user %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <% if @genres.present? %>
+    <h4>Genres</h4>
+    <ul>
+        <% @genres.each do |genre| %>
+          <li>
+          <%= genre.name %>
+          </li>
+        <% end %>
+    </ul>      
+  <% end %>
+
+</aside>
+
+  <% if current_user_admin? %>
+  <section class="admin">
+    <%= link_to "Edit Movie", edit_movie_path, class: "button"%>
+    <%= link_to "Delete Movie", @movie, class: "button", data: { turbo_method: :delete, turbo_confirm: "confirm delete?"} %>
+  </section>
+  <%end%>
