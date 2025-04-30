@@ -1,24 +1,16 @@
-# README
+flix - README 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Built with Ruby on Rails, using Rails 7. 
 
-Things you may want to cover:
+Aim: Create a website that displays movies (localally) and allow users to rate/review them. Users are able to create an account and view their profile. An admin user is available to create new movies, edit movies and delete movies. 
 
-* Ruby version
+Running: This app should run locally without any changes to the source code. 
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Learning: 
+- Create a rails app from scratch
+- Learn the relationship between MVC
+- Migrations
+- User authentication
+- Password protection gems
+- One to Many relationships
+- Many to Many relationships
